@@ -15,6 +15,7 @@ public class Hiking {
     }
 
     public double getPlusElevation(List<GpsCoordinate> input) {
+        checkEmptyList(input);
         double totalElevation = 0;
         for (int i = 0; i < input.size() - 1; i++) {
             double elevation = input.get(i + 1).getElevation() - input.get(i).getElevation();
@@ -23,5 +24,11 @@ public class Hiking {
             }
         }
         return totalElevation;
+    }
+
+    private void checkEmptyList(List<GpsCoordinate> input) {
+        if (input == null) {
+            throw new IllegalArgumentException("Input list is empty.");
+        }
     }
 }
